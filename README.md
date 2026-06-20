@@ -2,7 +2,7 @@
 
 A vintage-style news terminal built on a Raspberry Pi, displaying live Ole Miss and SEC football updates, college football rankings, and news headlines on an old CRT television over composite (RCA) output.
 
-![Terminal running on CRT](CH_38 (2).jpg)
+![Terminal running on CRT](CH_38_2.jpg)
 
 This project is a heavily customized fork of [RetroFeed](https://github.com/JeffJetton/retrofeed) by Jeff Jetton, which scrolls plain ASCII text up the screen in the style of Don Lancaster's TV Typewriter. The original handles general news/weather/finance segments — this version replaces and extends that with Ole Miss and SEC-specific content, a custom font/display pipeline tuned for CRT output, and original sound effects.
 
@@ -19,7 +19,7 @@ This project is a heavily customized fork of [RetroFeed](https://github.com/Jeff
 - CRT television, connected via composite/RCA
 - (Optional) SSH access for remote development
 
-![Terminal running on CRT](CH_38 (1).jpg)
+![Terminal running on CRT](CH_38_1.jpg)
 
 ## Setup
 
@@ -82,4 +82,4 @@ MIT — see `LICENSE`. Original copyright retained per the terms of the upstream
 
 Use a Raspberry Pi to display weather, news, and other information, on a composite monitor... vintage style!
 
-![RetroFeed in use](./img/CH_38 (3).jpg)
+![RetroFeed in use](./img/CH_38_3.jpg)
