@@ -23,6 +23,8 @@ from segment_parent import SegmentParent
 INTRO = 'News from The New York Times'
 DEFAULT_URL = 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml'
 
+MAGENTA = '\033[35m'
+
 class Segment(SegmentParent):
 
     def __init__(self, display, init):
@@ -65,8 +67,11 @@ class Segment(SegmentParent):
             self.d.set_color('\033[32m')
             self.d.print_update_msg('Getting NYT News')
             self.refresh_data()
+            self.d.newline()
+            self.d.newline()
+            self.d.newline()
 
-        self.d.set_color('\033[36m')
+        self.d.set_color(MAGENTA)
         self.d.print_header('New York Times', '!')
         self.d.newline()
 
@@ -76,8 +81,7 @@ class Segment(SegmentParent):
 
         for i in range(num_items):
             item = self.data['items'][self.data['item_index']]
- #           self.d.newline(self.d.beat_delay)
-            self.d.set_color('\033[36m')
+            self.d.set_color(MAGENTA)
             self.d.print('-' * self.d.width)
             self.d.newline()
             self.d.print(item['headline'])

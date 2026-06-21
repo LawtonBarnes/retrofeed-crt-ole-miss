@@ -114,6 +114,9 @@ class Segment(SegmentParent):
             self.d.set_color('\033[32m')
             self.d.print_update_msg('Getting Ole Miss Schedule')
             self.refresh_data()
+            self.d.newline()
+            self.d.newline()
+            self.d.newline()
 
         self.d.set_color('\033[31m')
         self.d.print_header('Ole Miss Schedule', '!')

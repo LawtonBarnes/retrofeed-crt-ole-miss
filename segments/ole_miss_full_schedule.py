@@ -147,6 +147,9 @@ class Segment(SegmentParent):
             self.d.set_color(GREEN)
             self.d.print_update_msg('Getting Ole Miss Schedule')
             self.refresh_data()
+            self.d.newline()
+            self.d.newline()
+            self.d.newline()
 
         today = dt.date.today()
         year = today.year
@@ -185,10 +188,33 @@ class Segment(SegmentParent):
         # Next game wear line
         self.d.newline()
         if next_wear:
-            wear_text = f'NEXT GAME: WEAR {next_wear.upper()}'
-            padding = (self.d.width - len(wear_text)) // 2
-            self.d.set_color(CYAN)
-            self.d.print(' ' * padding + wear_text)
+            wear_lower = next_wear.lower()
+            if next_wear == 'Stripe Out':
+                words  = ['NEXT', 'GAME', 'STRIPE', 'OUT']
+                colors = [RED,    CYAN,   RED,      CYAN]
+                padding = (self.d.width - len('NEXT GAME STRIPE OUT')) // 2
+                self.d.print(' ' * padding, end='')
+                for i, (word, color) in enumerate(zip(words, colors)):
+                    self.d.set_color(color)
+                    if i < len(words) - 1:
+                        self.d.print(word + ' ', end='')
+                    else:
+                        self.d.print(word)
+            else:
+                if 'powder' in wear_lower:
+                    wear_color = CYAN
+                elif 'red' in wear_lower:
+                    wear_color = RED
+                elif 'white' in wear_lower:
+                    wear_color = WHITE
+                elif 'blue' in wear_lower:
+                    wear_color = BLUE
+                else:
+                    wear_color = CYAN
+                wear_text = f'NEXT GAME: WEAR {next_wear.upper()}'
+                padding = (self.d.width - len(wear_text)) // 2
+                self.d.set_color(wear_color)
+                self.d.print(' ' * padding + wear_text)
 
         # Footer stars
         self.d.newline()

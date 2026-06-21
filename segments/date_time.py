@@ -59,3 +59,4 @@ class Segment(SegmentParent):
         if fmt == 'shorttime':
             self.d.print(time_text)
 
+

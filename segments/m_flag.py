@@ -62,4 +62,4 @@ class Segment(SegmentParent):
                 self.d.set_color(RED)
             self.d.print(c, end='')
         self.d.wait_beats(5)
-        d.newline()
+        d.newline(3)

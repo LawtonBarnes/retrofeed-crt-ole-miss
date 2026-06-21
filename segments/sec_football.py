@@ -23,6 +23,9 @@ from segment_parent import SegmentParent
 INTRO = 'SEC Football news from Google News'
 RSS_URL = 'https://news.google.com/rss/search?q=SEC+football&hl=en-US&gl=US&ceid=US:en'
 
+GREEN = '\033[32m'
+WHITE = '\033[37m'
+
 class Segment(SegmentParent):
 
     def __init__(self, display, init):
@@ -58,15 +61,33 @@ class Segment(SegmentParent):
         if self.data_is_stale():
             self.d.print_update_msg('Getting SEC Football News')
             self.refresh_data()
+            self.d.newline()
+            self.d.newline()
+            self.d.newline()
 
-        self.d.print_header('SEC Football', '!')
+        title = '  SEC HEADLINES  '
+        num_bangs = (self.d.width - len(title)) // 2
+        self.d.set_color(GREEN)
+        self.d.print('!' * num_bangs, end='')
+        self.d.set_color(WHITE)
+        self.d.print(title, end='')
+        self.d.set_color(GREEN)
+        self.d.print('!' * num_bangs)
         self.d.newline()
 
         if not self.data['items']:
+            self.d.set_color(GREEN)
             self.d.print('No stories available.')
             return
 
         for item in self.data['items'][:num_items]:
             self.d.newline(self.d.beat_delay)
-            self.d.print(item['headline'])
+            parts = item['headline'].rsplit(' - ', 1)
+            self.d.set_color(GREEN)
+            self.d.print(parts[0], end='')
+            if len(parts) == 2:
+                self.d.set_color(WHITE)
+                self.d.print(' - ' + parts[1])
+            else:
+                self.d.print('')
 

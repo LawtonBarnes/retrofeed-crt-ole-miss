@@ -65,6 +65,10 @@ class Segment(SegmentParent):
             self.d.set_color('\033[32m')
             self.d.print_update_msg('Getting ESPN Football')
             self.refresh_data()
+            self.d.newline()
+            self.d.newline()
+            self.d.newline()
+            
 
         self.d.set_color('\033[33m')
         self.d.print_header('ESPN College Football', '!')
@@ -82,7 +86,7 @@ class Segment(SegmentParent):
             if item['description']:
                 self.d.newline()
                 self.d.print(item['description'])
-            self.d.newline(self.d.beat_delay)
+            self.d.newline(self.d.beat_delay * 2)
             self.d.set_color('\033[33m')
             self.d.print('_' * self.d.width)
             self.d.newline()

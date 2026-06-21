@@ -23,6 +23,9 @@ from segment_parent import SegmentParent
 INTRO = 'Pete Golding news from Google News'
 RSS_URL = 'https://news.google.com/rss/search?q=Pete+Golding+Ole+Miss&hl=en-US&gl=US&ceid=US:en'
 
+CYAN  = '\033[36m'
+WHITE = '\033[37m'
+
 class Segment(SegmentParent):
 
     def __init__(self, display, init):
@@ -58,7 +61,11 @@ class Segment(SegmentParent):
         if self.data_is_stale():
             self.d.print_update_msg('Getting Pete Golding News')
             self.refresh_data()
+            self.d.newline()
+            self.d.newline()
+            self.d.newline()
 
+        self.d.set_color(CYAN)
         self.d.print_header('Pete Golding', '!')
         self.d.newline()
 
@@ -68,5 +75,10 @@ class Segment(SegmentParent):
 
         for item in self.data['items'][:num_items]:
             self.d.newline(self.d.beat_delay)
-            self.d.print(item['headline'])
+            parts = item['headline'].rsplit(' - ', 1)
+            self.d.set_color(CYAN)
+            self.d.print(parts[0])
+            if len(parts) == 2:
+                self.d.set_color(WHITE)
+                self.d.print('-- ' + parts[1])
 

@@ -22,6 +22,7 @@ LAT = 34.3665
 LON = -89.5192
 
 GREEN = '\033[32m'
+CYAN  = '\033[36m'
 
 # NWS API requires a User-Agent identifying the app/contact - replace email
 HEADERS = {'User-Agent': '(retrofeed, lawton@lawtonbarnes.com)'}
@@ -63,8 +64,11 @@ class Segment(SegmentParent):
             self.d.set_color(GREEN)
             self.d.print_update_msg('Getting Current Conditions')
             self.refresh_data()
+            self.d.newline()
+            self.d.newline()
+            self.d.newline()
 
-        self.d.set_color(GREEN)
+        self.d.set_color(CYAN)
 
         if self.data['temp'] is None:
             self.d.print('Current conditions unavailable.')

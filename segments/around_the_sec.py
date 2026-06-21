@@ -23,6 +23,7 @@ GREEN = '\033[32m'
 WHITE = '\033[37m'
 MAGENTA = '\033[35m'
 YELLOW  = '\033[33m'
+BLUE    = '\033[34m'
 
 
 class Segment(SegmentParent):
@@ -70,10 +71,19 @@ class Segment(SegmentParent):
             self.d.set_color(GREEN)
             self.d.print_update_msg('Getting SEC Scores')
             self.refresh_data()
+            self.d.newline()
+            self.d.newline()
+            self.d.newline()
 
         self.d.newline()
+        title = ' AROUND THE SEC '
+        num_dashes = (self.d.width - len(title)) // 2
+        self.d.set_color(WHITE)
+        self.d.print('-' * num_dashes, end='')
         self.d.set_color(GREEN)
-        self.d.print('Around the SEC')
+        self.d.print(title, end='')
+        self.d.set_color(WHITE)
+        self.d.print('-' * num_dashes)
         self.d.newline()
 
         if not self.data['games']:
@@ -83,16 +93,20 @@ class Segment(SegmentParent):
 
         for game in self.data['games']:
 
+            away = game['away_name'][:18]
+            home = game['home_name'][:16]
+
             self.d.set_color(WHITE)
-            self.d.print(game['away_name'], end='')
+            self.d.print(f"{away:>18}", end='')
             self.d.set_color(YELLOW)
             self.d.print(' ' + game['away_score'])
 
             self.d.set_color(WHITE)
-            self.d.print('@ ' + game['home_name'], end='')
+            self.d.print(f"{'@ ' + home:>18}", end='')
             self.d.set_color(YELLOW)
             self.d.print(' ' + game['home_score'])
 
-            self.d.set_color(YELLOW)
-            self.d.print(game['status'])
+            self.d.set_color(GREEN)
+            self.d.print(game['status'].center(26))
             self.d.newline()
+            self.d.wait_beats(1)

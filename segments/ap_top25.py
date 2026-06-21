@@ -70,6 +70,9 @@ class Segment(SegmentParent):
             self.d.set_color('\033[32m')
             self.d.print_update_msg('Getting AP Top 25')
             self.refresh_data()
+            self.d.newline()
+            self.d.newline()
+            self.d.newline()
 
         self.d.set_color('\033[33m')
         self.d.print_header('AP Top 25', '=')

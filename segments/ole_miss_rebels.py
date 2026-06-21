@@ -58,6 +58,9 @@ class Segment(SegmentParent):
         if self.data_is_stale():
             self.d.print_update_msg('Getting Ole Miss Rebels News')
             self.refresh_data()
+            self.d.newline()
+            self.d.newline()
+            self.d.newline()
 
         self.d.print_header('Ole Miss Rebels', '!')
         self.d.newline()

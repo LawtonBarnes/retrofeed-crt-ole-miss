@@ -43,8 +43,8 @@ full_schedule = {module='ole_miss_full_schedule'}
 schedule = {module='ole_miss_schedule'}
 top25 = {module='ap_top25'}
 espn_ncf = {module='espn_ncf'}
-nyt = {module='nyt_news'}
-nyt_sports = {module='nyt_news', url='https://rss.nytimes.com/services/xml/rss/nyt/US.xml', intro=''}
+nyt_politics = {module='nyt_news'}
+nyt_national = {module='nyt_news', url='https://rss.nytimes.com/services/xml/rss/nyt/US.xml', intro=''}
 dtime = {module = 'date_time.py'}
 news = {module = 'ap_news.py'}
 sec = {module='sec_football'}
@@ -80,29 +80,28 @@ ole_miss = {module='ole_miss_football'}
 # of display parameters, but none are given, defaults will be assumed.
 [playlist]
 segment_pause = 1        # Seconds to wait between segments
+
 order = ['dtime',
-         'rebel_results',
-         'conditions',
-         'around_the_sec',
-         'metal_shop',
-         'channel_38',
          'full_schedule',
-         'top25', 
-         'espn_ncf',
-         'nyt',
-         'dtime',
-         'nyt_sports',
-         'm_flag',
-         'ole_miss',
          'rebels',
-         'golding',
+         'nyt_national',
          'dtime',
-#         'news',
+         'top25', 
+         'rebel_results',
+         'channel_38',
+         'around_the_sec',
+         'dtime',
+         'conditions',
          'schedule',
+         'espn_ncf',
+         'metal_shop',
+         'nyt_politics',
          'dtime',
-         'sec',
-         'rankings',
-         'dtime',
+         'golding',
          'ole_miss',
+         'rankings',
+         'sec',
+         'm_flag',
+]
+#         'news',
 #         ['news', {items = 3, headline_mode = true}]
-        ]

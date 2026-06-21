@@ -26,6 +26,7 @@ RED    = '\033[31m'
 GREEN  = '\033[32m'
 WHITE  = '\033[37m'
 YELLOW = '\033[33m'
+BLUE   = '\033[34m'
 
 NS = {'ev': 'http://purl.org/rss/1.0/modules/event/'}
 
@@ -115,10 +116,18 @@ class Segment(SegmentParent):
             self.d.set_color(GREEN)
             self.d.print_update_msg('Getting Rebel Results')
             self.refresh_data()
+            self.d.newline()
+            self.d.newline()
+            self.d.newline()
 
-        self.d.set_color(RED)
-        self.d.print('REBEL RESULTS')
-        self.d.print('LAST 7 DAYS')
+        for title in (' REBEL RESULTS ', ' LAST 7 DAYS '):
+            num_stars = (self.d.width - len(title)) // 2
+            self.d.set_color(BLUE)
+            self.d.print('*' * num_stars, end='')
+            self.d.set_color(RED)
+            self.d.print(title, end='')
+            self.d.set_color(BLUE)
+            self.d.print('*' * num_stars)
         self.d.newline()
 
         if not self.data['results']:
